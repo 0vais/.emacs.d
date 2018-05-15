@@ -1,0 +1,13 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: sicp-header
+# key: sicp
+# --
+---
+chapterName: "Computing with Register Machines"
+chapter: `(substring (file-name-nondirectory (directory-file-name (file-name-directory buffer-file-name))) 3)`
+solution: "`(substring (file-name-base buffer-file-name) 3)`"
+order: "0`(substring (file-name-base buffer-file-name) 5)`"
+date: `(format-time-string "%Y-%m-%d")` 
+---
+
+$0
