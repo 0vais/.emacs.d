@@ -50,5 +50,6 @@
 (require 'mod-markdown)
 (require 'mod-tex)
 (require 'mod-org)
+(require 'mod-haskell)
 (require 'vc)
 (require 'conf-projectile)
