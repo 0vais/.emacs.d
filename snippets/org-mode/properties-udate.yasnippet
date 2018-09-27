@@ -1,0 +1,10 @@
+# name: properties with created and updated date
+# contributor: Jonathan Arkell <jonnay@jonnay.net>
+# contributor: Rafael Villarroel (rvf0068@gmail.com)
+# condition: (= (current-column) (+ (current-indentation) 5))
+# key: uprop
+# --
+ :PROPERTIES:
+ :CREATED: `(format-time-string "[%Y-%m-%d %a %H:%M]" (current-time))`
+ :UPDATED: `(format-time-string "[%Y-%m-%d %a %H:%M]" (current-time))`
+ :END:

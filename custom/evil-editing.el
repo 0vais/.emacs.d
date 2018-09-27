@@ -13,6 +13,7 @@
   :demand
   :init
   (setq evil-want-integration nil)
+  (setq evil-want-keybinding nil)  		;; needed by evil-collection
   ;; Finer granularity of evil - https://emacs.stackexchange.com/questions/3358/how-can-i-get-undo-behavior-in-evil-similar-to-vims/3508
   (setq evil-want-fine-undo t)
 
@@ -29,12 +30,12 @@
 	;; to disable showing state in mode-line
 	;; (setq evil-mode-line-format nil)
 	;; in terminal cursor does not change.
-	(setq evil-normal-state-cursor '("green" box))
-	(setq evil-emacs-state-cursor '("red" box))
-	(setq evil-visual-state-cursor '("orange" box))
-	(setq evil-insert-state-cursor '("red" bar))
-	(setq evil-replace-state-cursor '("red" bar))
-	(setq evil-operator-state-cursor '("red" hollow))
+	;; (setq evil-normal-state-cursor '("green" box))
+	;; (setq evil-emacs-state-cursor '("red" box))
+	;; (setq evil-visual-state-cursor '("orange" box))
+	;; (setq evil-insert-state-cursor '("red" bar))
+	;; (setq evil-replace-state-cursor '("red" bar))
+	;; (setq evil-operator-state-cursor '("red" hollow))
 	;; ls command by default opens list-buffer, remap it to ibuffer.
 	(evil-ex-define-cmd "ls" 'ibuffer) ;; ideally its better to make ibuffer as default in emacs rather changing evil mapping but it seems it is not working
 	;; configuration to have all modes start in normal state

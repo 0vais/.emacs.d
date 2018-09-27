@@ -32,6 +32,17 @@
 (use-package diminish
   :ensure t)
 
+;; String manipulation library
+;; used in evil-org
+(use-package s
+  :ensure t)
+
+;; For ecryption - note currently i am using encryption only in org mode. if thats not the case this should be moved to appropriate place.
+(require 'epa-file)
+(epa-file-enable)
+;; documentation says something about the invocation of pinentry, which sounds like the interface for entering the passphrase. And as the documentation says, by setting epa-pinentry-mode to 'loopback Emacs will handle querying the passphrase through minibuffer, the perfect desired behavior. Taken from https://colinxy.github.io/software-installation/2016/09/24/emacs25-easypg-issue.html
+(setf epa-pinentry-mode 'loopback)
+
 (eval-after-load "eldoc"
   '(diminish 'eldoc-mode))
 

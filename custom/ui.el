@@ -65,49 +65,6 @@
       '("" invocation-name " - " (:eval (if (buffer-file-name)
                                                     (abbreviate-file-name (buffer-file-name))
                                                   "%b"))))
-;; THEME
-
-;; (use-package zenburn-theme :ensure)
-;; TODO find a way to take out progn and make it common as this code should be executed only once before any of the theme is installed.
-;; (use-package material-theme :ensure)
-;; (use-package dracula-theme :ensure)
-;; (use-package darktooth-theme :ensure)
-;; (use-package gruvbox-theme :ensure)
-;; (use-package solarized-theme :ensure)
-
-;;only use/load one theme at a time else they end up messing with each other.
-(use-package material-theme
-  :ensure
-  :demand
-  :init
-  (progn
-    (defvar my-color-themes (list 'material 'solarized-dark 'solarized-light 'gruvbox-dark-soft 'gruvbox-dark-hard 'darktooth 'dracula 'zenburn))
-    (defvar theme-current '(material))
-    (defvar color-theme-is-global nil) ; Initialization
-
-    (defun my-theme-set-default ()
-      (interactive)
-      ;; (setq theme-current my-color-themes)
-      (load-theme (car theme-current) t))
-
-    (defun my-describe-theme () ; Show the current theme
-      (interactive)
-      (message "%s" (car theme-current)))
-
-    (defun my-theme-cycle ()
-      (interactive)
-      (setq theme-current (cdr theme-current))
-      (if (null theme-current)
-          (setq theme-current my-color-themes))
-      (load-theme (car theme-current) t)
-      (message "%S" (car theme-current)))
-    )
-  :bind
-  ("C-c t" . my-theme-cycle)
-  :config
-  (my-theme-set-default))
-
-
 ;; FONTS
 ;; change font to Inconsolata for better looking text
 ;; remember to install the font DejaVu first on Operating System(if not available)
@@ -185,3 +142,38 @@
 ;;                       (buffer-face-set '(:background "#626262"))))))
 ;;   (buffer-face-set 'default))
 ;; (add-hook 'buffer-list-update-hook 'highlight-selected-window)
+
+
+
+;; THEME
+
+;; (use-package zenburn-theme :ensure)
+;; TODO find a way to take out progn and make it common as this code should be executed only once before any of the theme is installed.
+;; (use-package material-theme :ensure)
+;; (use-package dracula-theme :ensure)
+;; (use-package darktooth-theme :ensure)
+;; (use-package gruvbox-theme :ensure)
+;; (use-package solarized-theme :ensure)
+;;only use/load one theme at a time else they end up messing with each other.
+(use-package zenburn-theme
+  :ensure
+  :demand
+  :init
+  
+  :config
+  ;; (custom-theme-set-faces
+  ;;  'zenburn
+  ;;   `(isearch ((t (:foreground , "white" :weight bold :background , "SteelBlue"))))
+  ;;  `(lazy-highlight ((t (:foreground , "white" :weight bold :background , "SteelBlue")))))
+  
+  (load-theme 'zenburn t)
+  ;; change color for selection as it is very light in zenburn
+  (set-face-attribute 'region nil :background "#808080")
+  
+  ;; change color for search highlight as this is also very light n zenburn
+  
+  (custom-set-faces
+    `(isearch ((t (:foreground , "black" :weight bold :background , "#fff200"))))
+   `(lazy-highlight ((t (:foreground "red" :weight bold :background "#ede110")))))
+  )
+
