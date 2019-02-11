@@ -9,7 +9,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-	(pdf-tools nov auto-dim-other-buffers intero hindent haskell-mode evil-org-agenda evil-markdown counsel-projectile projectile which-key mmm-mode org-bullets company highlight-defined highlight-quoted lispy rainbow-delimiters smartparens evil git-gutter ibuffer-vc evil-commentary spaceline fic-mode all-the-icons zenburn-theme yasnippet yaml-mode use-package solarized-theme polymode material-theme markdown-mode lispyville general flx evil-surround evil-smartparens evil-org evil-collection counsel company-quickhelp command-log-mode auctex))))
+	(neotree ensime pdf-tools nov auto-dim-other-buffers intero hindent haskell-mode evil-org-agenda evil-markdown counsel-projectile projectile which-key mmm-mode org-bullets company highlight-defined highlight-quoted lispy rainbow-delimiters smartparens evil git-gutter ibuffer-vc evil-commentary spaceline fic-mode all-the-icons zenburn-theme yasnippet yaml-mode use-package solarized-theme polymode material-theme markdown-mode lispyville general flx evil-surround evil-smartparens evil-org evil-collection counsel company-quickhelp command-log-mode auctex))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

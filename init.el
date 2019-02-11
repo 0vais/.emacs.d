@@ -9,6 +9,8 @@
              '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives
              '("melpamarmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -62,5 +64,6 @@
 (require 'mod-tex)
 (require 'mod-org)
 (require 'mod-haskell)
+(require 'mod-scala)
 (require 'vc)
 (require 'conf-projectile)
