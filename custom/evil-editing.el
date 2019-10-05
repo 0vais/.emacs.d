@@ -8,6 +8,15 @@
 
 (setq-default tab-width 4)
 
+;; evil uses undo-tree
+(use-package undo-tree
+  :diminish undo-tree-mode
+  :config
+  (progn
+    (global-undo-tree-mode)
+    (setq undo-tree-visualizer-timestamps t)
+    (setq undo-tree-visualizer-diff t)))
+
 (use-package evil
   :ensure t
   :demand
@@ -53,14 +62,6 @@
 	(define-key minibuffer-local-completion-map [escape] 'keyboard-escape-quit)
 	(define-key minibuffer-local-must-match-map [escape] 'keyboard-escape-quit)
 	(define-key minibuffer-local-isearch-map [escape] 'keyboard-escape-quit)))
-
-(use-package undo-tree
-  :diminish undo-tree-mode
-  :config
-  (progn
-    (global-undo-tree-mode)
-    (setq undo-tree-visualizer-timestamps t)
-    (setq undo-tree-visualizer-diff t)))
 
 ;; this integrates commenting with text-objects
 ;; gcc comments out a line (takes a count)

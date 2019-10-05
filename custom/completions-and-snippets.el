@@ -66,10 +66,11 @@ https://github.com/company-mode/company-mode/issues/216#issuecomment-69871034"
   (general-predicate-dispatch #'company-manual-begin
     (company-explicit-action-p) #'company-complete-common-or-cycle)
   "Menu-item used to first explicitly enter company menu and then cycle.")
-
 (general-emacs-define-key company-active-map
   "C-h" nil
   "C-w" nil
+  "C-p" #'company-select-previous-or-abort
+  "C-n" #'company-select-next-or-abort
   "<tab>" noct:company-complete-then-cycle
   "TAB" noct:company-complete-then-cycle)
 

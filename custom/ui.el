@@ -69,7 +69,7 @@
 ;; change font to Inconsolata for better looking text
 ;; remember to install the font DejaVu first on Operating System(if not available)
 ;; TODO - Does not work in mac terminal
-(setq default-frame-alist '((font . "DejaVu Sans Mono 12")))
+(setq default-frame-alist '((font . "DejaVu Sans Mono 13")))
 ;; TODO set italic font for italic face, since Emacs does not set italic
 ;; face automatically
 ;(set-face-attribute 'italic nil

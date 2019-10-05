@@ -35,3 +35,19 @@
 ;; so.                                                                          
 (setq desktop-save 'if-exists)
 (desktop-save-mode t)
+
+;; Taken from https://scalameta.org/metals/docs/editors/emacs.html
+;; Enable nice rendering of diagnostics like compile errors.
+(use-package flycheck
+  :init (global-flycheck-mode))
+
+(use-package lsp-mode
+  ;; Optional - enable lsp-mode automatically in scala files
+  :hook (scala-mode . lsp)
+  :config (setq lsp-prefer-flymake nil))
+
+(use-package lsp-ui)
+
+;; Add company-lsp backend for metals
+(use-package company-lsp)
+;; End of code taken from scalameta url above

@@ -35,3 +35,5 @@
   ;; "w" '(hydra-window/body :which-key "Window")
   "d" '(counsel-dired-jump :which-key "Dired")
   "f" '(counsel-find-file :which-key "Find file"))
+
+;;; keybindings.el ends here
