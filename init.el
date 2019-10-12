@@ -23,7 +23,7 @@
 ;; To update the package list
 ;; checks if there are no package archives, which should only be the case  when emacs starts first time emacs in a machine.
 (when (not package-archive-contents)
-    (package-refresh-contents))
+  (package-refresh-contents))
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))

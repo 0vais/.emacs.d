@@ -87,11 +87,4 @@ https://github.com/company-mode/company-mode/issues/216#issuecomment-69871034"
   :init
   (add-hook 'company-mode-hook #'company-quickhelp-mode))
 
-;;disabled all this crap since this configuration is already working fine without any keybinding from evil-collection.
-  ;;(progn
-	;;(define-key yas-keymap (kbd "TAB") nil)
-	;;(general-define-key :states '(normal insert emacs)
-	;;				:keymaps 'yas-keymap "C-k" 'yas-next-field-or-maybe-expand)
-	;;)
-;; Also enable vim bindings using evil-collection. The above code enables tab completion only.
-;; (with-eval-after-load 'company (require 'evil-collection-company) (evil-collection-company-setup))
+;; end of file

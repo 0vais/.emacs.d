@@ -1,8 +1,10 @@
 (provide 'mod-scala)
 
-;; (use-package ensime
-;;   :ensure t
-;;   :pin melpa-stable)
+;; ideally ensime should not be used as metals does the same work
+;; somehow scala-mode depends on ensime and emacs was giving error bec of t his
+;; including it for this reason.
+(use-package ensime
+  :ensure t)
 
 ;; (add-to-list 'exec-path "/usr/local/bin")
 ;; (setq

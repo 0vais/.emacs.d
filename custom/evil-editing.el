@@ -21,8 +21,13 @@
   :ensure t
   :demand
   :init
-  (setq evil-want-integration nil)
-  (setq evil-want-keybinding nil)  		;; needed by evil-collection
+  ;; this flag is checked in evil
+  ;; for evil-collection to work correctly this should be t
+  ;; these flag ned not be changed even if it is required to enable mod specific keybinding from evil-collection
+  ;; for that just set nil in the variable evil-collection-mode-list to nil
+  ;; and then mod by mod call enabling 
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil) ;; needed by evil-collection
   ;; Finer granularity of evil - https://emacs.stackexchange.com/questions/3358/how-can-i-get-undo-behavior-in-evil-similar-to-vims/3508
   (setq evil-want-fine-undo t)
 
@@ -82,18 +87,9 @@
 (use-package evil-collection
   :after evil
   :ensure t
+  :demand
   :init
-  ;; well, i dont like to turn on every thing by default so will add as i use
-  (setq evil-collection-mode-list nil)
   :config
+  ;; enabled for all modes provided by default by evil-collection
+  ;; change this if wanted to enable for specific modes
   (evil-collection-init))
-
-;; Enable evil collection for package, dired
-(with-eval-after-load 'package-menu (require 'evil-collection-package-menu) (evil-collection-package-menu-setup))
-(with-eval-after-load 'info (require 'evil-collection-info) (evil-collection-info-setup))
-(with-eval-after-load 'man (require 'evil-collection-man) (evil-collection-man-setup))
-(with-eval-after-load 'dired (require 'evil-collection-dired) (evil-collection-dired-setup))
-(with-eval-after-load 'help (require 'evil-collection-help) (evil-collection-help-setup))
-(with-eval-after-load 'ibuffer (require 'evil-collection-ibuffer) (evil-collection-ibuffer-setup))
-(with-eval-after-load 'ag (require 'evil-collection-ag) (evil-collection-ag-setup))
-;; (with-eval-after-load 'minibuffer (require 'evil-collection-minibuffer) (evil-collection-minibuffer-setup))

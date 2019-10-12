@@ -28,7 +28,9 @@
 (my-leader-def
   "a" '(ovi/org-tasks-agenda :which-key "Org Tasks Agenda")
   "N" '(ovi/org-notes-agenda :which-key "Org Notes Agenda")
-  "/" '(counsel-ag :which-key "ag")
+  "/" '(swiper :which-key "swiper")
+  "s" '(counsel-ag :which-key "ag")
+  "x" '(counsel-M-x :which-key "counsel-M-x")
   "TAB" '(ivy-switch-buffer :which-key "Counsel Switch Buffer")
   "b" '(ibuffer :which-key "Open IBuffer")
   "B" '(ibuffer-other-window :which-key "Win Open Buffer")

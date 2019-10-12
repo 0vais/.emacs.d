@@ -20,9 +20,7 @@
   :config
   (pdf-tools-install)
   (setq pdf-view-resize-factor 1.1)
-  (setq-default pdf-view-display-size 'fit-page)
-  (require 'evil-collection-pdf)
-  (evil-collection-pdf-setup))
+  (setq-default pdf-view-display-size 'fit-page))
 
 (use-package nov
   :ensure t

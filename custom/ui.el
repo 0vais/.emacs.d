@@ -6,6 +6,7 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
+
 ;; Taken from https://stackoverflow.com/questions/26824328/hide-change-emacs-fringe-bent-arrows-due-to-word-wrapping
 ;; The problem is word-wrap icons are jittery and taking too much space.
 ;; (define-fringe-bitmap 'right-curly-arrow
@@ -41,8 +42,6 @@
 (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(fullscreen . fullheight))
 
-(size-indication-mode t)
-
 ;; Line numbers are added in an efficient way only in emacs 26
 ;; So there is no packages supporting relative numbers.
 ;; Packages like nlinum-relative dont use this efficient implementation
@@ -54,6 +53,9 @@
 ;; highlight current line
 (global-hl-line-mode 1)
 
+(setq display-time-day-and-date t)
+(display-time-mode 1)
+(setq column-number-mode t)
 
 ;; hide welcome screen
 (setq inhibit-startup-screen t)
@@ -61,15 +63,15 @@
 ;; more useful frame title, that show either a file or a
 ;; buffer name (if the buffer isn't visiting a file)
 ;; taken from prelude-ui.el
-(setq frame-title-format
-      '("" invocation-name " - " (:eval (if (buffer-file-name)
-                                                    (abbreviate-file-name (buffer-file-name))
-                                                  "%b"))))
+;; (setq frame-title-format
+;;       '("" invocation-name " - " (:eval (if (buffer-file-name)
+;;                                                     (abbreviate-file-name (buffer-file-name))
+;;                                                   "%b"))))
 ;; FONTS
 ;; change font to Inconsolata for better looking text
 ;; remember to install the font DejaVu first on Operating System(if not available)
 ;; TODO - Does not work in mac terminal
-(setq default-frame-alist '((font . "DejaVu Sans Mono 13")))
+(setq default-frame-alist '((font . "DejaVu Sans Mono 12")))
 ;; TODO set italic font for italic face, since Emacs does not set italic
 ;; face automatically
 ;(set-face-attribute 'italic nil
@@ -88,50 +90,53 @@
 ;;   :ensure t)
 
 ;; mode-line, note that power-line does not work with macs so smart-mode-line can not work with powerline theme.
-(use-package smart-mode-line
-  :ensure t
-  :init
-  (setq sml/theme 'dark)
-  :config
-  (sml/setup))
 
-;; hide file size in mod-line
-(setq size-indication-mode nil)
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Mode-Line-Variables.html
-(setq-default mode-line-format
-			  (list
-			   '("%e"
-				 mode-line-modified
-				 evil-mode-line-tag
-				 sml/pos-id-separator
-				 mode-line-buffer-identification
-				 sml/pos-id-separator
-				 )
-			   ;; line and column
-			   ;; "(" ;; '%02' to set to 2 chars at least; prevents flickering
-			   ;; (propertize "%02l" 'face 'font-lock-type-face)
-			   ;; ","
-			   ;; (propertize "%02c" 'face 'font-lock-type-face)
-			   
-			   ;; ") "
-			   ;;mode-line-front-space
-			   '("%e"
-				 mode-line-mule-info
-				 mode-line-client
-				 mode-line-remote
-				 mode-line-frame-identification
-				 sml/pos-id-separator
-				 mode-line-misc-info
-				 smartrep-mode-line-string
-				 (vc-mode vc-mode)
-				 sml/pre-modes-separator
-				 mode-line-modes
-				 mode-line-position
-				 mode-line-end-spaces
-				 sml/pos-id-separator
-				 )
-				  
-			   ))
+;; (setq-default mode-line-format
+;; 	(list
+;; 	'("%e"
+;; 		mode-line-modified
+;; 		evil-mode-line-tag
+;; 		sml/pos-id-separator
+;; 		mode-line-buffer-identification
+;; 		sml/pos-id-separator
+;; 		;; line and column
+;; 		"(" ;; '%02' to set to 2 chars at least; prevents flickering
+;; 		(propertize "%02l" 'face 'font-lock-type-face)
+;; 		","
+;; 		(propertize "%02c" 'face 'font-lock-type-face)
+;; 		") "
+;; 		)
+;; 	;;mode-line-front-space
+;; 	'("%e"
+;; 		mode-line-mule-info
+;; 		mode-line-client
+;; 		mode-line-remote
+;; 		mode-line-frame-identification
+;; 		sml/pos-id-separator
+;; 		mode-line-misc-info
+;; 		smartrep-mode-line-string
+;; 		(vc-mode vc-mode)
+;; 		sml/pre-modes-separator
+;; 		mode-line-modes
+;; 		mode-line-position
+;; 		mode-line-end-spaces
+;; 		sml/pos-id-separator
+;; 		)))
+
+(use-package smart-mode-line
+  :demand
+  :ensure t
+  :config
+  (setq sml/replacer-regexp-list nil))
+
+(use-package smart-mode-line-powerline-theme
+  :demand
+  :ensure t
+  :after smart-mode-line
+  :config
+  (sml/setup)
+  (sml/apply-theme 'powerline))
 
 ;;To highlight current buffer 
 ;; (defun highlight-selected-window ()
@@ -173,7 +178,7 @@
   ;; change color for search highlight as this is also very light n zenburn
   
   (custom-set-faces
-    `(isearch ((t (:foreground , "black" :weight bold :background , "#fff200"))))
+   `(isearch ((t (:foreground , "black" :weight bold :background , "#fff200"))))
    `(lazy-highlight ((t (:foreground "red" :weight bold :background "#ede110")))))
   )
 
