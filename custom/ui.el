@@ -53,31 +53,42 @@
 ;; highlight current line
 (global-hl-line-mode 1)
 
-(setq display-time-day-and-date t)
-(display-time-mode 1)
+;; display date/time in mod-line
+;; (setq display-time-day-and-date t)
+;; display time in the mod-line if date is enabled(via display-time-day-and-date)
+;; (display-time-mode 1)
 (setq column-number-mode t)
 
 ;; hide welcome screen
 (setq inhibit-startup-screen t)
 
-;; more useful frame title, that show either a file or a
-;; buffer name (if the buffer isn't visiting a file)
-;; taken from prelude-ui.el
-;; (setq frame-title-format
-;;       '("" invocation-name " - " (:eval (if (buffer-file-name)
-;;                                                     (abbreviate-file-name (buffer-file-name))
-;;                                                   "%b"))))
 ;; FONTS
 ;; change font to Inconsolata for better looking text
 ;; remember to install the font DejaVu first on Operating System(if not available)
 ;; TODO - Does not work in mac terminal
-(setq default-frame-alist '((font . "DejaVu Sans Mono 12")))
+;; (setq default-frame-alist '((font . "DejaVu Sans Mono 10")))
 ;; TODO set italic font for italic face, since Emacs does not set italic
 ;; face automatically
 ;(set-face-attribute 'italic nil
 ;                    :family "Inconsolata-Italic")
 
-;By default colors were not working in the theme(in mac) so added this line from online suggestions.
+;; Taken from https://www.reddit.com/r/emacs/comments/5twcka/which_font_do_you_use/ddq3mx7?utm_source=share&utm_medium=web2x
+(set-language-environment "UTF-8")
+(set-default-coding-systems 'utf-8-unix)
+
+;; set a default font
+(when (member "DejaVu Sans Mono" (font-family-list))
+  (set-face-attribute 'default nil :font "DejaVu Sans Mono 10"))
+
+;; specify font for all unicode characters
+(when (member "Symbola" (font-family-list))
+  (set-fontset-font t 'unicode "Symbola" nil 'prepend))
+
+;; specify font for chinese characters using default chinese font on linux
+(when (member "WenQuanYi Micro Hei" (font-family-list))
+  (set-fontset-font t '(#x4e00 . #x9fff) "WenQuanYi Micro Hei" ))
+
+										;By default colors were not working in the theme(in mac) so added this line from online suggestions.
 (custom-set-faces (if (not window-system) '(default ((t (:background "nil"))))))
 
 ;; install icons. For fresh installation remember to install all fonts using M-x all-the-icons-install-fonts
@@ -88,41 +99,6 @@
 ;; TODO enable it in appropriate mode using add hook
 ;; (use-package rainbow-mode
 ;;   :ensure t)
-
-;; mode-line, note that power-line does not work with macs so smart-mode-line can not work with powerline theme.
-
-;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Mode-Line-Variables.html
-;; (setq-default mode-line-format
-;; 	(list
-;; 	'("%e"
-;; 		mode-line-modified
-;; 		evil-mode-line-tag
-;; 		sml/pos-id-separator
-;; 		mode-line-buffer-identification
-;; 		sml/pos-id-separator
-;; 		;; line and column
-;; 		"(" ;; '%02' to set to 2 chars at least; prevents flickering
-;; 		(propertize "%02l" 'face 'font-lock-type-face)
-;; 		","
-;; 		(propertize "%02c" 'face 'font-lock-type-face)
-;; 		") "
-;; 		)
-;; 	;;mode-line-front-space
-;; 	'("%e"
-;; 		mode-line-mule-info
-;; 		mode-line-client
-;; 		mode-line-remote
-;; 		mode-line-frame-identification
-;; 		sml/pos-id-separator
-;; 		mode-line-misc-info
-;; 		smartrep-mode-line-string
-;; 		(vc-mode vc-mode)
-;; 		sml/pre-modes-separator
-;; 		mode-line-modes
-;; 		mode-line-position
-;; 		mode-line-end-spaces
-;; 		sml/pos-id-separator
-;; 		)))
 
 (use-package smart-mode-line
   :demand

@@ -2,6 +2,7 @@
 
 ;; yasnippet
 (use-package yasnippet
+  :demand
   :ensure t
   :diminish (yas-minor-mode . "ya")
   :config
